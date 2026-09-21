@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Learning Hub</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(
+            135deg,
+            #17171c,
+            #24243a,
+            #30305a
+        );
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1000px;
+        text-align: center;
+    }
+
+    .header {
+        margin-bottom: 50px;
+    }
+
+    .header h1 {
+        font-size: clamp(36px, 6vw, 64px);
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .header p {
+        font-size: 18px;
+        color: #c7c7d0;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .card {
+        text-decoration: none;
+        color: white;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 25px;
+        padding: 45px 30px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.13);
+        border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .icon {
+        font-size: 65px;
+        margin-bottom: 25px;
+    }
+
+    .card h2 {
+        font-size: 30px;
+        margin-bottom: 12px;
+    }
+
+    .card p {
+        color: #c7c7d0;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 12px 25px;
+        border-radius: 30px;
+        background: white;
+        color: #20202a;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .footer {
+        margin-top: 50px;
+        color: #888894;
+        font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+        body {
+            padding: 20px;
+        }
+
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .cards {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            padding: 35px 25px;
+        }
+
+        .icon {
+            font-size: 55px;
+        }
+
+        .card h2 {
+            font-size: 26px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="container">
+
+    <div class="header">
+        <h1>Learning Hub</h1>
+        <p>Choose what you want to practice today</p>
+    </div>
+
+    <div class="cards">
+
+        <!-- Chinese -->
+        <a href="./Chinese/index.html" class="card">
+            <div class="icon">🇨🇳</div>
+
+            <h2>Chinese</h2>
+
+            <p>
+                Practice Chinese vocabulary, translation,
+                questions and sentence scrambling.
+            </p>
+
+            <span class="button">
+                Open Chinese →
+            </span>
+        </a>
+
+
+        <!-- IELTS Reading -->
+        <a href="./IELTS/index.html" class="card">
+            <div class="icon">📖</div>
+
+            <h2>IELTS Reading</h2>
+
+            <p>
+                Practice IELTS Reading with passages,
+                question types and timed tests.
+            </p>
+
+            <span class="button">
+                Open IELTS →
+            </span>
+        </a>
+
+    </div>
+
+    <div class="footer">
+        © 2026 Learning Hub
+    </div>
+
+</div>
+```
+
+</body>
+</html>
