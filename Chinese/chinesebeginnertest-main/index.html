@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#ff6b00"
+    >
+
+    <title>Chinese Daily Test</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOGIN SCREEN
+    ====================================================== -->
+
+    <section
+        id="loginScreen"
+        class="screen active"
+    >
+
+        <div class="login-container">
+
+            <div class="login-box">
+
+                <!-- Logo -->
+                <div class="login-logo">
+                    <div class="logo-circle">
+                        中
+                    </div>
+                </div>
+
+
+                <!-- Title -->
+                <h1 class="login-title">
+                    CHINESE DAILY TEST
+                </h1>
+
+
+                <p class="login-subtitle">
+                    Practice your Chinese every day
+                </p>
+
+
+                <!-- Login Form -->
+                <form
+                    id="loginForm"
+                    autocomplete="on"
+                >
+
+                    <!-- Username -->
+                    <div class="form-group">
+
+                        <label
+                            for="username"
+                        >
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter your username"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <label
+                            for="password"
+                        >
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Login Error / Message -->
+                    <div
+                        id="loginMessage"
+                        class="message"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <!-- Login Button -->
+                    <button
+                        type="submit"
+                        id="loginButton"
+                        class="primary-button login-button"
+                    >
+                        Login
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CHAPTER SCREEN
+    ====================================================== -->
+
+    <section
+        id="chapterScreen"
+        class="screen"
+    >
+
+        <div class="page-container">
+
+            <!-- Header -->
+            <header class="main-header">
+
+                <div class="header-brand">
+
+                    <div class="mini-logo">
+                        中
+                    </div>
+
+                    <div>
+                        <div class="header-small">
+                            CHINESE DAILY TEST
+                        </div>
+
+                        <div class="header-title">
+                            Daily Practice
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    Logout
+                </button>
+
+            </header>
+
+
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+
+                <div>
+
+                    <p class="section-label">
+                        WELCOME BACK
+                    </p>
+
+                    <h1>
+                        Hello,
+                        <span id="welcomeUsername">
+                            Student
+                        </span>
+                    </h1>
+
+                    <p class="welcome-description">
+                        Choose a chapter to start your Chinese test.
+                    </p>
+
+                </div>
+
+
+                <!-- Class badge -->
+                <div
+                    id="studentClassBadge"
+                    class="class-badge"
+                >
+                    Beginner
+                </div>
+
+            </div>
+
+
+            <!-- Chapter Header -->
+            <div class="section-heading-row">
+
+                <div>
+
+                    <h2>
+                        Chapters
+                    </h2>
+
+                    <p>
+                        Select a chapter to begin.
+                    </p>
+
+                </div>
+
+
+                <!-- Score History -->
+                <button
+                    type="button"
+                    id="chapterHistoryButton"
+                    class="secondary-button"
+                >
+                    Score History
+                </button>
+
+            </div>
+
+
+            <!-- Chapter Cards -->
+            <div
+                id="chapterGrid"
+                class="chapter-grid"
+            >
+                <!-- Generated by app.js -->
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TEST SCREEN
+    ====================================================== -->
+
+    <section
+        id="testScreen"
+        class="screen"
+    >
+
+        <div class="test-page">
+
+            <!-- Test Header -->
+            <header class="test-header">
+
+                <button
+                    type="button"
+                    id="backToChapters"
+                    class="back-button"
+                >
+                    ← Chapters
+                </button>
+
+
+                <div class="test-brand">
+
+                    <div class="mini-logo">
+                        中
+                    </div>
+
+                    <div>
+
+                        <div class="header-small">
+                            CHINESE DAILY TEST
+                        </div>
+
+                        <div
+                            id="testChapter"
+                            class="test-chapter-title"
+                        >
+                            Chapter 1
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="test-header-spacer"></div>
+
+            </header>
+
+
+            <!-- Part Navigation -->
+            <nav
+                class="part-navigation"
+                aria-label="Test Parts"
+            >
+
+                <button
+                    type="button"
+                    class="part-tab active"
+                    data-part="part1"
+                >
+                    <span class="part-number">
+                        01
+                    </span>
+
+                    <span class="part-name">
+                        Translation
+                    </span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="part-tab"
+                    data-part="part2"
+                >
+                    <span class="part-number">
+                        02
+                    </span>
+
+                    <span class="part-name">
+                        Question
+                    </span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="part-tab"
+                    data-part="part3"
+                >
+                    <span class="part-number">
+                        03
+                    </span>
+
+                    <span class="part-name">
+                        Scramble
+                    </span>
+                </button>
+
+            </nav>
+
+
+            <!-- Test Content -->
+            <main class="test-content">
+
+                <!-- Test Card -->
+                <div class="test-card">
+
+                    <!-- Part Title -->
+                    <div class="test-card-header">
+
+                        <div>
+
+                            <p class="section-label">
+                                CURRENT PART
+                            </p>
+
+                            <h1 id="partTitle">
+                                Translation
+                            </h1>
+
+                        </div>
+
+
+                        <div
+                            id="questionCounter"
+                            class="question-counter"
+                        >
+                            Question 1 / 10
+                        </div>
+
+                    </div>
+
+
+                    <!-- Progress -->
+                    <div class="progress-container">
+
+                        <div class="progress-track">
+
+                            <div
+                                id="progressBar"
+                                class="progress-bar"
+                                style="width: 0%;"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Question -->
+                    <div class="question-section">
+
+                        <div
+                            id="questionType"
+                            class="question-type"
+                        >
+                            TRANSLATION
+                        </div>
+
+
+                        <div
+                            id="questionText"
+                            class="question-text"
+                        >
+                            Question
+                        </div>
+
+                    </div>
+
+
+                    <!-- Selected Words -->
+                    <div class="answer-section">
+
+                        <div class="answer-label-row">
+
+                            <span class="answer-label">
+                                YOUR ANSWER
+                            </span>
+
+                            <button
+                                type="button"
+                                id="clearAnswer"
+                                class="clear-button"
+                            >
+                                Clear
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="selectedWords"
+                            class="selected-words"
+                            aria-live="polite"
+                        >
+                            <!-- Selected words generated by app.js -->
+                        </div>
+
+                    </div>
+
+
+                    <!-- Word Bank -->
+                    <div class="word-bank-section">
+
+                        <div class="word-bank-title">
+                            SELECT WORDS
+                        </div>
+
+
+                        <div
+                            id="wordBank"
+                            class="word-bank"
+                        >
+                            <!-- Word buttons generated by app.js -->
+                        </div>
+
+                    </div>
+
+
+                    <!-- Navigation -->
+                    <div class="question-navigation">
+
+                        <button
+                            type="button"
+                            id="previousButton"
+                            class="secondary-button navigation-button"
+                        >
+                            ← Previous
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="nextButton"
+                            class="primary-button navigation-button next-button"
+                        >
+                            Next →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESULT SCREEN
+    ====================================================== -->
+
+    <section
+        id="resultScreen"
+        class="screen"
+    >
+
+        <div class="result-page">
+
+            <div class="result-container">
+
+                <!-- Result Header -->
+                <div class="result-header">
+
+                    <div class="mini-logo">
+                        中
+                    </div>
+
+                    <p class="section-label">
+                        TEST COMPLETE
+                    </p>
+
+                    <h1>
+                        Great Work!
+                    </h1>
+
+                    <p>
+                        Here is your test result.
+                    </p>
+
+                </div>
+
+
+                <!-- Chapter -->
+                <div
+                    id="resultChapter"
+                    class="result-chapter"
+                >
+                    Chapter 1
+                </div>
+
+
+                <!-- Total Score -->
+                <div class="total-score-card">
+
+                    <div class="total-score-label">
+                        TOTAL SCORE
+                    </div>
+
+                    <div
+                        id="totalScore"
+                        class="total-score"
+                    >
+                        0
+                    </div>
+
+                    <div
+                        id="percentageScore"
+                        class="percentage-score"
+                    >
+                        0%
+                    </div>
+
+                </div>
+
+
+                <!-- Part Scores -->
+                <div class="score-grid">
+
+                    <!-- Part 1 -->
+                    <div class="score-card">
+
+                        <div class="score-card-number">
+                            01
+                        </div>
+
+                        <div class="score-card-title">
+                            Translation
+                        </div>
+
+                        <div
+                            id="part1Score"
+                            class="part-score"
+                        >
+                            0
+                        </div>
+
+                    </div>
+
+
+                    <!-- Part 2 -->
+                    <div class="score-card">
+
+                        <div class="score-card-number">
+                            02
+                        </div>
+
+                        <div class="score-card-title">
+                            Question
+                        </div>
+
+                        <div
+                            id="part2Score"
+                            class="part-score"
+                        >
+                            0
+                        </div>
+
+                    </div>
+
+
+                    <!-- Part 3 -->
+                    <div class="score-card">
+
+                        <div class="score-card-number">
+                            03
+                        </div>
+
+                        <div class="score-card-title">
+                            Scramble
+                        </div>
+
+                        <div
+                            id="part3Score"
+                            class="part-score"
+                        >
+                            0
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Save Status -->
+                <div
+                    id="saveStatus"
+                    class="save-status"
+                    aria-live="polite"
+                >
+                    Saving your score...
+                </div>
+
+
+                <!-- Result Actions -->
+                <div class="result-actions">
+
+                    <button
+                        type="button"
+                        id="scoreHistoryButton"
+                        class="secondary-button result-button"
+                    >
+                        View Score History
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="backToChapterButton"
+                        class="primary-button result-button"
+                    >
+                        Back to Chapters
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCORE HISTORY SCREEN
+    ====================================================== -->
+
+    <section
+        id="historyScreen"
+        class="screen"
+    >
+
+        <div class="history-page">
+
+            <!-- History Header -->
+            <header class="history-header">
+
+                <button
+                    type="button"
+                    id="backFromHistory"
+                    class="back-button"
+                >
+                    ← Back
+                </button>
+
+
+                <div class="history-header-content">
+
+                    <div class="mini-logo">
+                        中
+                    </div>
+
+                    <div>
+
+                        <div class="header-small">
+                            CHINESE DAILY TEST
+                        </div>
+
+                        <h1>
+                            Score History
+                        </h1>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Student Information -->
+            <div class="history-student-card">
+
+                <div>
+
+                    <div class="history-label">
+                        STUDENT
+                    </div>
+
+                    <div
+                        id="historyStudent"
+                        class="history-student"
+                    >
+                        Student
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Loading -->
+            <div
+                id="historyLoading"
+                class="history-message"
+            >
+                Loading score history...
+            </div>
+
+
+            <!-- Empty -->
+            <div
+                id="historyEmpty"
+                class="history-message"
+                style="display: none;"
+            >
+                You haven't completed any tests yet.
+            </div>
+
+
+            <!-- Error / History -->
+            <div
+                id="historyList"
+                class="history-list"
+            >
+                <!-- Generated by app.js -->
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="app.js"
+    ></script>
+
+</body>
+</html>
