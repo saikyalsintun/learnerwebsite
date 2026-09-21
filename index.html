@@ -15,124 +15,413 @@
         box-sizing: border-box;
     }
 
+    :root {
+        --bg: #080810;
+        --card: rgba(255, 255, 255, 0.07);
+        --border: rgba(255, 255, 255, 0.12);
+        --text: #ffffff;
+        --muted: #a7a7b5;
+        --purple: #8b5cf6;
+        --blue: #3b82f6;
+        --pink: #ec4899;
+    }
+
     body {
         min-height: 100vh;
         font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(
-            135deg,
-            #17171c,
-            #24243a,
-            #30305a
-        );
-        color: white;
+        color: var(--text);
+        background:
+            radial-gradient(
+                circle at 10% 20%,
+                rgba(139, 92, 246, 0.20),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 90% 80%,
+                rgba(59, 130, 246, 0.18),
+                transparent 30%
+            ),
+            linear-gradient(
+                135deg,
+                #080810,
+                #10101c,
+                #0c0c16
+            );
+
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 30px;
+
+        padding: 40px 20px;
+        overflow-x: hidden;
+    }
+
+    /* Decorative background circles */
+
+    .orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.35;
+        pointer-events: none;
+    }
+
+    .orb.one {
+        width: 250px;
+        height: 250px;
+        background: #7c3aed;
+        top: -100px;
+        left: -80px;
+    }
+
+    .orb.two {
+        width: 300px;
+        height: 300px;
+        background: #2563eb;
+        bottom: -120px;
+        right: -100px;
     }
 
     .container {
         width: 100%;
-        max-width: 1000px;
-        text-align: center;
+        max-width: 1050px;
+        position: relative;
+        z-index: 2;
     }
 
+    /* Header */
+
     .header {
-        margin-bottom: 50px;
+        text-align: center;
+        margin-bottom: 55px;
+    }
+
+    .logo {
+        width: 62px;
+        height: 62px;
+        margin: 0 auto 25px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 18px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #8b5cf6,
+                #6366f1,
+                #3b82f6
+            );
+
+        box-shadow:
+            0 15px 40px rgba(99, 102, 241, 0.35);
+
+        font-size: 30px;
     }
 
     .header h1 {
-        font-size: clamp(36px, 6vw, 64px);
-        margin-bottom: 15px;
-        font-weight: 700;
+        font-size: clamp(42px, 7vw, 68px);
+        font-weight: 800;
+        letter-spacing: -2px;
+        margin-bottom: 14px;
+
+        background:
+            linear-gradient(
+                90deg,
+                #ffffff,
+                #c4b5fd,
+                #93c5fd
+            );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
     }
 
     .header p {
-        font-size: 18px;
-        color: #c7c7d0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.6;
     }
+
+    /* Cards */
 
     .cards {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
+        gap: 25px;
     }
 
     .card {
+        position: relative;
+        overflow: hidden;
+
         text-decoration: none;
         color: white;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 25px;
-        padding: 45px 30px;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+
+        padding: 38px;
+
+        min-height: 350px;
+
+        display: flex;
+        flex-direction: column;
+
+        border-radius: 28px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,0.10),
+                rgba(255,255,255,0.035)
+            );
+
+        border: 1px solid var(--border);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        transition:
+            transform 0.35s ease,
+            border-color 0.35s ease,
+            box-shadow 0.35s ease;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+
+        width: 180px;
+        height: 180px;
+
+        border-radius: 50%;
+
+        filter: blur(60px);
+
+        opacity: 0.25;
+
+        top: -80px;
+        right: -60px;
+
+        transition: opacity 0.35s ease;
+    }
+
+    .chinese::before {
+        background: #ef4444;
+    }
+
+    .ielts::before {
+        background: #3b82f6;
     }
 
     .card:hover {
-        transform: translateY(-8px);
-        background: rgba(255, 255, 255, 0.13);
-        border-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-10px);
+
+        border-color: rgba(255,255,255,0.25);
+
+        box-shadow:
+            0 25px 70px rgba(0,0,0,0.35);
     }
 
-    .icon {
-        font-size: 65px;
-        margin-bottom: 25px;
+    .card:hover::before {
+        opacity: 0.45;
     }
+
+    /* Icon */
+
+    .icon-box {
+        width: 72px;
+        height: 72px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 20px;
+
+        margin-bottom: 28px;
+
+        font-size: 38px;
+
+        background: rgba(255,255,255,0.08);
+
+        border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .chinese .icon-box {
+        box-shadow:
+            inset 0 0 30px rgba(239,68,68,0.08);
+    }
+
+    .ielts .icon-box {
+        box-shadow:
+            inset 0 0 30px rgba(59,130,246,0.10);
+    }
+
+    /* Text */
 
     .card h2 {
         font-size: 30px;
         margin-bottom: 12px;
+        letter-spacing: -0.5px;
     }
 
     .card p {
-        color: #c7c7d0;
-        font-size: 16px;
-        line-height: 1.6;
-        margin-bottom: 25px;
+        color: var(--muted);
+        font-size: 15.5px;
+        line-height: 1.7;
+
+        max-width: 420px;
+
+        margin-bottom: 30px;
     }
+
+    /* Button */
 
     .button {
-        display: inline-block;
-        padding: 12px 25px;
-        border-radius: 30px;
-        background: white;
-        color: #20202a;
-        font-weight: bold;
-        font-size: 15px;
+        margin-top: auto;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        width: fit-content;
+
+        padding: 12px 20px;
+
+        border-radius: 12px;
+
+        font-size: 14px;
+        font-weight: 700;
+
+        background: rgba(255,255,255,0.10);
+
+        border: 1px solid rgba(255,255,255,0.12);
+
+        transition:
+            background 0.3s ease,
+            transform 0.3s ease;
     }
+
+    .card:hover .button {
+        background: white;
+        color: #11111a;
+        transform: translateX(4px);
+    }
+
+    /* Small label */
+
+    .label {
+        position: absolute;
+
+        top: 28px;
+        right: 28px;
+
+        padding: 6px 10px;
+
+        border-radius: 20px;
+
+        font-size: 11px;
+        font-weight: 700;
+
+        color: #bdbdcc;
+
+        background: rgba(255,255,255,0.06);
+
+        border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Footer */
 
     .footer {
+        text-align: center;
+
         margin-top: 50px;
-        color: #888894;
-        font-size: 14px;
+
+        color: #686875;
+
+        font-size: 13px;
     }
 
+    /* Mobile */
+
     @media (max-width: 700px) {
+
         body {
-            padding: 20px;
+            padding: 30px 18px;
+            align-items: flex-start;
+        }
+
+        .container {
+            padding-top: 20px;
         }
 
         .header {
-            margin-bottom: 35px;
+            margin-bottom: 38px;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            font-size: 26px;
+            border-radius: 16px;
+        }
+
+        .header h1 {
+            font-size: 43px;
+            letter-spacing: -1.5px;
+        }
+
+        .header p {
+            font-size: 15px;
+            padding: 0 15px;
         }
 
         .cards {
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 18px;
         }
 
         .card {
-            padding: 35px 25px;
-        }
-
-        .icon {
-            font-size: 55px;
+            min-height: 320px;
+            padding: 30px;
+            border-radius: 24px;
         }
 
         .card h2 {
-            font-size: 26px;
+            font-size: 27px;
+        }
+
+        .icon-box {
+            width: 64px;
+            height: 64px;
+            font-size: 32px;
+        }
+
+        .label {
+            top: 22px;
+            right: 22px;
+        }
+
+        .footer {
+            margin-top: 35px;
+        }
+    }
+
+    @media (max-width: 400px) {
+
+        .header h1 {
+            font-size: 38px;
+        }
+
+        .card {
+            padding: 25px;
+        }
+
+        .card h2 {
+            font-size: 25px;
         }
     }
 </style>
@@ -143,53 +432,98 @@
 <body>
 
 ```
+<!-- Background decoration -->
+<div class="orb one"></div>
+<div class="orb two"></div>
+
+
 <div class="container">
 
-    <div class="header">
-        <h1>Learning Hub</h1>
-        <p>Choose what you want to practice today</p>
-    </div>
+    <!-- Header -->
+    <header class="header">
 
+        <div class="logo">
+            🎓
+        </div>
+
+        <h1>Learning Hub</h1>
+
+        <p>
+            Your space to practice, learn and improve.
+        </p>
+
+    </header>
+
+
+    <!-- Learning Cards -->
     <div class="cards">
 
+
         <!-- Chinese -->
-        <a href="./Chinese/index.html" class="card">
-            <div class="icon">🇨🇳</div>
+        <a href="./Chinese/index.html" class="card chinese">
 
-            <h2>Chinese</h2>
+            <span class="label">
+                LANGUAGE
+            </span>
+
+            <div class="icon-box">
+                🇨🇳
+            </div>
+
+            <h2>
+                Chinese
+            </h2>
 
             <p>
-                Practice Chinese vocabulary, translation,
-                questions and sentence scrambling.
+                Practice vocabulary, translation,
+                pinyin questions and sentence
+                scrambling through structured
+                chapter exercises.
             </p>
 
             <span class="button">
-                Open Chinese →
+                Start Learning
+                <span>→</span>
             </span>
+
         </a>
 
 
-        <!-- IELTS Reading -->
-        <a href="./IELTS/index.html" class="card">
-            <div class="icon">📖</div>
+        <!-- IELTS -->
+        <a href="./IELTS/index.html" class="card ielts">
 
-            <h2>IELTS Reading</h2>
+            <span class="label">
+                EXAM PRACTICE
+            </span>
+
+            <div class="icon-box">
+                📖
+            </div>
+
+            <h2>
+                IELTS Reading
+            </h2>
 
             <p>
-                Practice IELTS Reading with passages,
-                question types and timed tests.
+                Improve your reading skills with
+                realistic passages, multiple question
+                types and timed practice tests.
             </p>
 
             <span class="button">
-                Open IELTS →
+                Start Practice
+                <span>→</span>
             </span>
+
         </a>
 
     </div>
 
-    <div class="footer">
+
+    <!-- Footer -->
+    <footer class="footer">
         © 2026 Learning Hub
-    </div>
+    </footer>
 
 </div>
 ```
